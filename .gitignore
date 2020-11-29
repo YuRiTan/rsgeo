@@ -1,0 +1,10 @@
+*.so
+*.whl
+*.egg-info
+__pycache__
+
+.ipynb_checkpoints
+.idea
+
+Cargo.lock
+/target/
