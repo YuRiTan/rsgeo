@@ -1,6 +1,5 @@
 #![feature(test)]
-use crate::rustgeos::my_contains;
-// use rustgeos::core::my_contains;
+use crate::rustgeos::core::my_contains;
 extern crate test;
 use geo::{LineString, Polygon};
 use rand;

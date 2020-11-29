@@ -1,1 +1,1 @@
-from .rustgeos import *  # noqa
+from .rustgeos import contains  # noqa

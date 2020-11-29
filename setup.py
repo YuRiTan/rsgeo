@@ -9,9 +9,9 @@ test_requires = install_requires + ['pytest']
 setup(
     name='rustgeos',
     version='0.1.0',
-    description='Example of python extension with ndarray-linalg',
+    description='Some geospatial functions with rust backaend.',
     rust_extensions=[RustExtension(
-        'rustgeos', #.rustgeos',
+        'rustgeos',
         './Cargo.toml',
     )],
     install_requires=install_requires,

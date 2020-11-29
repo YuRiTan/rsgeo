@@ -8,7 +8,7 @@ def test_contains():
     # p = Polygon(coords)
 
     xs = np.array([1, 0, 2, .5], dtype=np.float64)
-    ys = np.array([1, 0, 2, .25], dtype=np.float65)
+    ys = np.array([1, 0, 2, .25], dtype=np.float64)
     result = rustgeos.contains(coords, xs, ys)
 
     np.testing.assert_array_equal(result, np.array([False, False, False, True]))

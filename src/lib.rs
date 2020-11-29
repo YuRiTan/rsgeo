@@ -1,35 +1,37 @@
 #![deny(rust_2018_idioms)]
 
-pub mod core;
-
+mod core;
 use crate::core::my_contains;
 use geo::{LineString, Polygon};
 use itertools::Itertools;
 use numpy::{IntoPyArray, PyArray1, PyArray2};
-use pyo3::prelude::{pymodule, Py, PyModule, PyResult, Python};
+use pyo3::prelude::{pymodule, pyfunction, Py, PyModule, PyResult, Python};
+use pyo3::wrap_pyfunction;
+
+#[pyfunction]
+unsafe fn contains(
+    py: Python<'_>,
+    poly_coords: &PyArray2<f64>,
+    xs: &PyArray1<f64>,
+    ys: &PyArray1<f64>,
+) -> PyResult<Py<PyArray1<bool>>> {
+    let ext_coords = poly_coords
+        .as_slice()
+        .unwrap()
+        .iter()
+        .copied()
+        .tuples::<(_, _)>()
+        .collect_vec();
+    let polygon = Polygon::new(LineString::from(ext_coords), vec![]);
+    let xs = xs.as_slice().unwrap();
+    let ys = ys.as_slice().unwrap();
+    println!("JOE");
+    Ok(my_contains(&polygon, xs, ys).into_pyarray(py).to_owned())
+}
 
 #[pymodule]
 fn rustgeos(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
-    #[pyfn(m, "contains")]
-    unsafe fn contains(
-        py: Python<'_>,
-        poly_coords: &PyArray2<f64>,
-        xs: &PyArray1<f64>,
-        ys: &PyArray1<f64>,
-    ) -> PyResult<Py<PyArray1<bool>>> {
-        let ext_coords = poly_coords
-            .as_slice()
-            .unwrap()
-            .iter()
-            .copied()
-            .tuples::<(_, _)>()
-            .collect_vec();
-        let polygon = Polygon::new(LineString::from(ext_coords), vec![]);
-        let xs = xs.as_slice().unwrap();
-        let ys = ys.as_slice().unwrap();
-        println!("JOE");
-        Ok(my_contains(&polygon, xs, ys).into_pyarray(py).to_owned())
-    }
+    m.add_wrapped(wrap_pyfunction!(contains)).unwrap();
     Ok(())
 }
 
