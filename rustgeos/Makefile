@@ -1,5 +1,2 @@
-
 release:
-	maturin build --release -o wheels -i $(which python)
-
-
+	maturin build --release -o wheels -i $$(which python)

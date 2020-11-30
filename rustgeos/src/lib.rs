@@ -23,7 +23,6 @@ unsafe fn contains(
     let polygon = Polygon::new(LineString::from(ext_coords), vec![]);
     let xs = xs.as_slice().unwrap();
     let ys = ys.as_slice().unwrap();
-    println!("JOE");
     Ok(my_contains(&polygon, xs, ys).into_pyarray(py).to_owned())
 }
 
