@@ -1,6 +1,7 @@
 #![feature(test)]
-use crate::rustgeos::core::my_contains;
 extern crate test;
+
+use coregeos::core::my_contains;
 use geo::{LineString, Polygon};
 use rand;
 use rand::Rng;
