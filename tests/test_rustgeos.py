@@ -1,5 +1,5 @@
 import numpy as np
-import rustgeos
+from new import rustgeos
 
 
 def test_contains():

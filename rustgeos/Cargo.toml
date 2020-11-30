@@ -1,0 +1,21 @@
+[package]
+name = "rustgeos"
+version = "0.1.1"
+authors = ["Yu Ri Tan"]
+edition = "2018"
+
+[lib]
+name = "rustgeos"
+crate-type = ["cdylib"]
+
+[dependencies]
+coregeos = {path = "../coregeos"}
+numpy = "0.12.1"
+ndarray = ">= 0.13"
+geo = "0.15.0"
+ndarray-linalg = { version = "0.12", features = ["openblas"] }
+itertools = "0.9.0"
+
+[dependencies.pyo3]
+version = "0.12"
+features = ["extension-module"]
