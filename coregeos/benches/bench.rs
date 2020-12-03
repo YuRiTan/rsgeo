@@ -1,7 +1,7 @@
 #![feature(test)]
 extern crate test;
 
-use coregeos::core::my_contains;
+use coregeos::core::vectorized_contains;
 use geo::{LineString, Polygon};
 use rand;
 use rand::Rng;
@@ -20,7 +20,7 @@ fn bench_performance_my_contains(b: &mut Bencher) {
         let xs: Vec<f64> = (0..1000000).map(|_| rng.gen_range(0., 2.)).collect();
         let ys: Vec<f64> = (0..1000000).map(|_| rng.gen_range(0., 2.)).collect();
 
-        result = my_contains(&polygon, &xs, &ys);
+        result = vectorized_contains(&polygon, &xs, &ys);
     });
 
     println!("SUM: {}", result.iter().map(|x| *x as u32).sum::<u32>());

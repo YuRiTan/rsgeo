@@ -1,3 +1,5 @@
 numpy
+nptyping
 pytest
 setuptools-rust
+nptyping
