@@ -1,6 +1,6 @@
 import numpy as np
 
-from rustgeos.algorithm import contains, distance  # noqa
+from rsgeo import contains, distance  # noqa
 
 
 def test_contains(polygon_coords, xs, ys):

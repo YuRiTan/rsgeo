@@ -1,7 +1,7 @@
 #![feature(test)]
 extern crate test;
 
-use coregeos::core::vectorized_contains;
+use core::functions::vectorized_contains;
 use geo::{LineString, Polygon};
 use rand;
 use rand::Rng;

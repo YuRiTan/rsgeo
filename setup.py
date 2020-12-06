@@ -7,11 +7,11 @@ install_requires = ['numpy']
 test_requires = install_requires + ['pytest']
 
 setup(
-    name='rustgeos',
+    name='rsgeo-py',
     version='0.1.1',
     description='Some geospatial functions with rust backaend.',
     rust_extensions=[RustExtension(
-        'rustgeos',
+        'rsgeo-py',
         './Cargo.toml',
     )],
     install_requires=install_requires,

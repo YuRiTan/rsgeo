@@ -97,24 +97,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cloudabi"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4344512281c643ae7638bbabc3af17a11307803ec8f0fcad9fae512a8bf36467"
-dependencies = [
- "bitflags",
-]
-
-[[package]]
-name = "coregeos"
-version = "0.1.0"
-dependencies = [
- "geo",
- "itertools",
- "rand 0.7.3",
-]
-
-[[package]]
 name = "ctor"
 version = "0.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -340,9 +322,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.80"
+version = "0.2.81"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4d58d1b70b004888f764dfbf6a26a3b0342a1632d33968e4a179d8011c760614"
+checksum = "1482821306169ec4d07f6aca392a4681f66c75c9918aa49641a2595db64053cb"
 
 [[package]]
 name = "lock_api"
@@ -480,12 +462,11 @@ dependencies = [
 
 [[package]]
 name = "parking_lot_core"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c361aa727dd08437f2f1447be8b59a33b0edd15e0fcee698f935613d9efbca9b"
+checksum = "d7c6d9b8427445284a09c55be860a15855ab580a417ccad9da88f5a06787ced0"
 dependencies = [
- "cfg-if 0.1.10",
- "cloudabi 0.1.0",
+ "cfg-if 1.0.0",
  "instant",
  "libc",
  "redox_syscall",
@@ -592,7 +573,7 @@ version = "0.5.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c618c47cd3ebd209790115ab837de41425723956ad3ce2e6a7f09890947cacb9"
 dependencies = [
- "cloudabi 0.0.3",
+ "cloudabi",
  "fuchsia-cprng",
  "libc",
  "rand_core 0.3.1",
@@ -674,6 +655,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d1a6eb3bd241993b09a354047bfba030778b347ac4de4bc0fd80e531e7cbfac8"
 
 [[package]]
+name = "rsgeo"
+version = "0.1.1"
+dependencies = [
+ "geo",
+ "itertools",
+ "ndarray 0.14.0",
+ "ndarray-linalg",
+ "numpy",
+ "pyo3",
+ "rsgeo-core",
+]
+
+[[package]]
+name = "rsgeo-core"
+version = "0.1.0"
+dependencies = [
+ "geo",
+ "itertools",
+ "rand 0.7.3",
+]
+
+[[package]]
 name = "rstar"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -686,19 +689,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustgeos"
-version = "0.1.1"
-dependencies = [
- "coregeos",
- "geo",
- "itertools",
- "ndarray 0.14.0",
- "ndarray-linalg",
- "numpy",
- "pyo3",
-]
-
-[[package]]
 name = "scopeguard"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -706,15 +696,15 @@ checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
 
 [[package]]
 name = "serde"
-version = "1.0.117"
+version = "1.0.118"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b88fa983de7720629c9387e9f517353ed404164b1e482c970a90c1a4aaf7dc1a"
+checksum = "06c64263859d87aa2eb554587e2d23183398d617427327cf2b3d0ed8c69e4800"
 
 [[package]]
 name = "smallvec"
-version = "1.5.0"
+version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7acad6f34eb9e8a259d3283d1e8c1d34d7415943d4895f65cc73813c7396fc85"
+checksum = "ae524f056d7d770e174287294f562e95044c68e88dec909a00d2094805db9d75"
 
 [[package]]
 name = "stable_deref_trait"

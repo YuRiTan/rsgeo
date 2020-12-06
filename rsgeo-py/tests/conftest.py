@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from rustgeos.geometry import Polygon  # noqa
+from rsgeo.geometry import Polygon  # noqa
 
 
 @pytest.fixture(scope='function')

@@ -1,10 +1,11 @@
 #![deny(rust_2018_idioms)]
-use coregeos::{vectorized_contains, vectorized_euclidean_distance};
+
+use rsgeo_core::{vectorized_contains, vectorized_euclidean_distance};
 use geo::{LineString, Polygon};
 use itertools::Itertools;
 use numpy::{IntoPyArray, PyArray1, PyArray2};
 use pyo3::prelude::{pymodule, pyfunction, Py, PyModule, PyResult, Python};
-use pyo3::wrap_pyfunction;
+use pyo3::{wrap_pyfunction};
 
 unsafe fn pyarray2_to_tuple_vec(arr: &PyArray2<f64>) -> Vec<(f64, f64)> {
     arr.as_slice()
@@ -44,7 +45,8 @@ unsafe fn distance(
 }
 
 #[pymodule]
-fn rustgeos(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn rsgeo(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+    m.add("__doc__", "Fast vectorized geospatial functions for numpy arrays.")?;
     m.add_wrapped(wrap_pyfunction!(contains)).unwrap();
     m.add_wrapped(wrap_pyfunction!(distance)).unwrap();
     Ok(())

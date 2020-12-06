@@ -1,15 +1,15 @@
 [package]
-name = "rustgeos"
+name = "rsgeo"
 version = "0.1.1"
 authors = ["Yu Ri Tan"]
 edition = "2018"
 
 [lib]
-name = "rustgeos"
+name = "rsgeo"
 crate-type = ["cdylib"]
 
 [dependencies]
-coregeos = {path = "../coregeos"}
+rsgeo-core = {path = "../rsgeo-core" }
 numpy = "0.12.1"
 ndarray = ">= 0.13"
 geo = "0.15.0"

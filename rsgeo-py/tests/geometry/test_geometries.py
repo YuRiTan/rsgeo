@@ -1,15 +1,15 @@
 import numpy as np
 
-from rustgeos.geometry import Polygon  # noqa
+from rsgeo.geometry import Polygon  # noqa
 
 
 class TestPolygon:
     def setup_method(self):
-        self.p = Polygon([(1, 2), (3, 4)])
+        self.p = Polygon([(0, 0), (1, 1), (1, 0), (0, 0)])
 
     def test_repr(self):
         str_repr = str(self.p)
-        exp = 'Polygon([(1, 2), (3, 4)])'
+        exp = 'Polygon([(0, 0), (1, 1), (1, 0), (0, 0)])'
         assert str_repr == exp
 
     def test_seq_to_2darray(self):

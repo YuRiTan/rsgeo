@@ -50,7 +50,6 @@ mod test {
         let xs = vec![1.0, 0.0, 2.0, 0.5];
         let ys = vec![1.0, 0.0, 2.0, 0.25];
         let result = vectorized_euclidean_distance(&polygon, &xs, &ys);
-        // println!("{}", result);
         assert_eq!(result, vec![0.0, 0.0, 1.4142135623730951, 0.0])
     }
 }
