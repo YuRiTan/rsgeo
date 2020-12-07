@@ -1,0 +1,32 @@
+name: Build and test
+
+on:
+  - push
+  - pull_request
+jobs:
+  test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install latest Rust nightly
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly-2020-11-12
+          override: true
+          components: rustfmt
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run formatting checks
+        run: |
+          cargo fmt -- --check
+      - name: Run tests
+        run: |
+          cd rsgeo-core && cargo test --all-features
+          cd ../rsgeo-py && make release && make tests && cd ..
