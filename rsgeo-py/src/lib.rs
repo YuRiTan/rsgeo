@@ -1,19 +1,19 @@
 #![deny(rust_2018_idioms)]
 
-use rsgeo_core::{vectorized_contains, vectorized_euclidean_distance};
 use geo::{LineString, Polygon};
 use itertools::Itertools;
 use numpy::{IntoPyArray, PyArray1, PyArray2};
-use pyo3::prelude::{pymodule, pyfunction, Py, PyModule, PyResult, Python};
-use pyo3::{wrap_pyfunction};
+use pyo3::prelude::{pyfunction, pymodule, Py, PyModule, PyResult, Python};
+use pyo3::wrap_pyfunction;
+use rsgeo_core::{vectorized_contains, vectorized_euclidean_distance};
 
 unsafe fn pyarray2_to_tuple_vec(arr: &PyArray2<f64>) -> Vec<(f64, f64)> {
     arr.as_slice()
-    .unwrap()
-    .iter()
-    .copied()
-    .tuples::<(_, _)>()
-    .collect_vec()
+        .unwrap()
+        .iter()
+        .copied()
+        .tuples::<(_, _)>()
+        .collect_vec()
 }
 
 #[pyfunction]
@@ -27,7 +27,9 @@ unsafe fn contains(
     let polygon = Polygon::new(LineString::from(ext_coords), vec![]);
     let xs = xs.as_slice().unwrap();
     let ys = ys.as_slice().unwrap();
-    Ok(vectorized_contains(&polygon, xs, ys).into_pyarray(py).to_owned())
+    Ok(vectorized_contains(&polygon, xs, ys)
+        .into_pyarray(py)
+        .to_owned())
 }
 
 #[pyfunction]
@@ -41,12 +43,17 @@ unsafe fn distance(
     let polygon = Polygon::new(LineString::from(ext_coords), vec![]);
     let xs = xs.as_slice().unwrap();
     let ys = ys.as_slice().unwrap();
-    Ok(vectorized_euclidean_distance(&polygon, xs, ys).into_pyarray(py).to_owned())
+    Ok(vectorized_euclidean_distance(&polygon, xs, ys)
+        .into_pyarray(py)
+        .to_owned())
 }
 
 #[pymodule]
 fn rsgeo(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
-    m.add("__doc__", "Fast vectorized geospatial functions for numpy arrays.")?;
+    m.add(
+        "__doc__",
+        "Fast vectorized geospatial functions for numpy arrays.",
+    )?;
     m.add_wrapped(wrap_pyfunction!(contains)).unwrap();
     m.add_wrapped(wrap_pyfunction!(distance)).unwrap();
     Ok(())

@@ -3,9 +3,9 @@ use geo::algorithm::euclidean_distance::EuclideanDistance;
 use geo::{Coordinate, CoordinateType, Point};
 
 pub fn vectorized_euclidean_distance<T, N>(geometry: &T, xs: &[N], ys: &[N]) -> Vec<N>
-    where
-        T: EuclideanDistance<N, Point<N>>,
-        N: CoordinateType
+where
+    T: EuclideanDistance<N, Point<N>>,
+    N: CoordinateType,
 {
     xs.iter()
         .zip(ys)
