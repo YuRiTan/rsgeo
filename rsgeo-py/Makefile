@@ -1,5 +1,5 @@
 test-build:
-	maturin build -o rsgeo-py/wheels -i $$(which python)
+	maturin build -o wheels -i $$(which python)
 
 test-install: test-build
 	python -m pip install -U wheels/rsgeo*
