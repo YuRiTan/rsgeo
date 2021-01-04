@@ -2,5 +2,6 @@ pandas
 numpy
 nptyping
 pytest
+pytest-cov
 setuptools-rust
 maturin

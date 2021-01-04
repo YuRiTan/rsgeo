@@ -29,8 +29,9 @@ jobs:
       - name: Run tests
         run: |
           cd rsgeo-core && cargo test --all-features
-          cd ../rsgeo-py && make run-tests && cd ..
+          cd ../rsgeo-py && make run-tests-with-cov && cd ..
       - name: Codecov
         uses: codecov/codecov-action@v1.1.1
         with:
-          working-directory: ../rs-geo-py/rsgeo
+          file: rsgeo-py/coverage.xml
+          verbose: true

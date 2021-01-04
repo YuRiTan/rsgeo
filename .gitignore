@@ -2,6 +2,8 @@
 *.whl
 *.egg-info
 __pycache__
+.coverage
+coverage.xml
 
 .ipynb_checkpoints
 .idea
