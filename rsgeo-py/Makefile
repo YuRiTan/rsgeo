@@ -13,7 +13,5 @@ release-install: release-build
 run-tests: test-install
 	pytest tests
 
-.ONESHELL:
 run-tests-with-cov: test-install
-	cd .. && python -m pytest --cov-report=xml:coverage.xml --cov=rsgeo rsgeo-py/tests/ && cd rsgeo-py
-
+	cd .. && python -m pytest --cov-report=xml --cov=rsgeo rsgeo-py/tests/ && cd rsgeo-py
