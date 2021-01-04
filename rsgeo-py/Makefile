@@ -1,5 +1,5 @@
 test-build:
-	maturin build -o wheels -i $$(which python)
+	maturin build -o rsgeo-py/wheels -i $$(which python)
 
 test-install: test-build
 	python -m pip install -U wheels/rsgeo*
@@ -13,6 +13,7 @@ release-install: release-build
 run-tests: test-install
 	pytest tests
 
+.ONESHELL:
 run-tests-with-cov: test-install
-	pytest --cov-report=xml:coverage.xml --cov=rsgeo tests/
+	cd .. && python -m pytest --cov-report=xml:coverage.xml --cov=rsgeo rsgeo-py/tests/ && cd rsgeo-py
 

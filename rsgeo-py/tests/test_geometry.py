@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from rsgeo.geometry import Polygon  # noqa
 
@@ -16,6 +17,24 @@ class TestPolygon:
         seq = [(1, 2), (3, 4)]
         res = self.p._seq_to_2darray(seq)
         np.testing.assert_array_equal(res, np.array([[1, 2], [3, 4]]))
+
+    def test_seq_to_2darray_sad_case(self):
+        seq = [(1, 2, 3), (4, 5, 6)]
+        with pytest.raises(ValueError):
+            _ = self.p._seq_to_2darray(seq)
+
+    @pytest.mark.parametrize("x, expected", [
+        (np.array([1, 2, 3]), np.array([1, 2, 3])),
+        (np.array([[1], [2], [3]]), np.array([1, 2, 3])),
+    ])
+    def test_to_1d(self, x, expected):
+        result = self.p._to_1d(x)
+        np.testing.assert_array_equal(result, expected)
+
+    def test_to_1d_sad_case(self):
+        x = np.array([(1, 2, 3), (4, 5, 6)])
+        with pytest.raises(ValueError):
+            _ = self.p._to_1d(x)
 
     def test_contains(self, xs, ys):
         res = self.p.contains(xs, ys)
