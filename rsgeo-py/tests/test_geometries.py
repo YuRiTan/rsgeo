@@ -9,7 +9,7 @@ class TestPolygon:
 
     def test_repr(self):
         str_repr = str(self.p)
-        exp = 'Polygon([(0, 0), (1, 1), (1, 0), (0, 0)])'
+        exp = "Polygon([(0, 0), (1, 1), (1, 0), (0, 0)])"
         assert str_repr == exp
 
     def test_seq_to_2darray(self):
