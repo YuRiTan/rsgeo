@@ -33,5 +33,5 @@ jobs:
       - name: Codecov
         uses: codecov/codecov-action@v1.1.1
         with:
-          file: rsgeo-py/coverage.xml
+          file: coverage.xml
           verbose: true
