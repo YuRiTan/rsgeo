@@ -46,7 +46,7 @@ performing the `contains` function, or the `distance` function.
 
 ## Performance
 To give an indication, I've plotted a simple contains operation for multiple packages. 
-[](rsgeo-py/notebooks/benchmark.png)
+![](rsgeo-py/notebooks/benchmark.png)
 
 And this is only the `contains` operation. `rsgeo` can also do a `distance` calculation for example!
 
