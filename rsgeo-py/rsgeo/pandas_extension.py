@@ -12,7 +12,7 @@ class GeoAccessor:
     def _get_xy(self):
         return self._obj[self._x].values, self._obj[self._y].values
 
-    def isin(self, polygon: Polygon):
+    def within(self, polygon: Polygon):
         return polygon.contains(*self._get_xy())
 
     def distance(self, polygon: Polygon):

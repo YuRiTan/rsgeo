@@ -31,7 +31,7 @@ import pandas as pd
 ...         "y_pos": ys,
 ...     }
 ... )
->>> df['within_polygon'] = df.rsgeo.isin(polygon)
+>>> df['within_polygon'] = df.rsgeo.within(polygon)
 >>> df['within_polygon']
 0    False
 1    False

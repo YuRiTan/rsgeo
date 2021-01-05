@@ -1,8 +1,8 @@
 import numpy as np
 
 
-def test_df_geo_accessor_isin(df, polygon):
-    result = df.rsgeo.isin(polygon)
+def test_df_geo_accessor_within(df, polygon):
+    result = df.rsgeo.within(polygon)
     expected = [False, False, False, True]
     np.testing.assert_array_equal(result, expected)
 
